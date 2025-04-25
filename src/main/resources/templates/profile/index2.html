@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js ss-preload" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Luther</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/static/css/vendor.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="http://localhost:35729/livereload.js"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+
+
+
+</head>
+
+<body id="top">
+
+
+<!-- # preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader">
+    </div>
+</div>
+
+
+<!-- # page wrap
+================================================== -->
+<div class="s-pagewrap">
+
+    <div class="circles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+    <!-- ## site header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-mobile">
+            <span class="mobile-home-link"><a href="index.html">Sherif Elglaly</a></span>
+            <a class="mobile-menu-toggle" href="#0"><span>Menu</span></a>
+        </div>
+
+        <div class="row wide main-nav-wrap">
+            <nav class="column lg-12 main-nav">
+                <ul>
+                    <li><a href="index.html" class="home-link">Sherif Elglaly.</a></li>
+                    <li class="current"><a href="#intro" class="smoothscroll">Intro</a></li>
+                    <li><a href="#about" class="smoothscroll">About</a></li>
+                    <li><a href="#works" class="smoothscroll">Works</a></li>
+                    <li><a href="#accomplishments" class="smoothscroll">Accomplishments</a></li>
+                    <li><a href="#contact" class="smoothscroll">Say Hello</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- ## main content
+    ==================================================- -->
+    <main class="s-content">
+
+
+        <!-- ### intro
+        ================================================== -->
+        <section id="intro" class="s-intro target-section">
+
+            <div class="row intro-content wide">
+
+                <div class="column">
+                    <div class="text-pretitle with-line">
+                        Hello World
+                    </div>
+
+                    <h1 class="text-huge-title" th:text="'I am '+ ${profile.getName()}">
+                    </h1>
+                    <h4 th:text="${profile.getBio()}">
+                    </h4>
+                </div>
+
+                <ul class="intro-social">
+                    <li><a th:href="${profile.linkedinLink}">LinkedIn</a></li>
+                    <li><a th:href="${profile.getGithubLink()}">GitHub</a></li>
+                </ul>
+
+            </div> <!-- end intro content -->
+
+            <a href="#about" class="intro-scrolldown smoothscroll">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
+            </a>
+
+        </section> <!-- end s-intro -->
+
+
+        <!-- ### about
+        ================================================== -->
+        <section id="about" class="s-about target-section">
+
+
+            <div class="row about-info wide" data-animate-block>
+
+                <div class="column lg-6 md-12 about-info__pic-block">
+                    <img src="/images/newyork.JPG"
+                         srcset="/images/newyork.JPG 1x, /images/newyork.JPG 2x" alt="" class="about-info__pic" data-animate-el>
+                </div>
+
+                <div class="column lg-6 md-12">
+                    <div class="about-info__text" >
+
+                        <h2 class="text-pretitle with-line" data-animate-el>
+                            About
+                        </h2>
+                        <p th:text="${profile.getAbout()}" class="attention-getter" data-animate-el>
+                        </p>
+                        <a th:href="${profile.cvLink}" class="btn btn--medium u-fullwidth" data-animate-el>Download CV</a>
+
+                    </div>
+                </div>
+            </div> <!-- about-info -->
+
+
+
+            <div class="row about-timelines" data-animate-block>
+
+                <div class="column lg-6 tab-12">
+
+                    <h2 class="text-pretitle" data-animate-el>
+                        Experience
+                    </h2>
+
+                    <div class="timeline" data-animate-el>
+
+                        <div class="timeline__block" th:each="experience : ${profile.getExperiences()}">
+                            <div class="timeline__bullet"></div>
+                            <div class="timeline__header">
+                                <h4 class="timeline__title" th:text="${experience.getCompanyName()}"></h4>
+                                <h5 class="timeline__meta" th:text="${experience.getPosition()}"></h5>
+                                <p class="timeline__timeframe" th:text="${experience.getStartDate()} + ' - ' + ${experience.getEndDate()}"></p>
+                            </div>
+                            <div class="timeline__desc">
+                                <p th:text="${experience.getDescription()}"></p>
+                            </div>
+                        </div>
+                    </div> <!-- end timeline -->
+
+                </div> <!-- end column -->
+
+                <div class="column lg-6 tab-12">
+
+                    <h2 class="text-pretitle" data-animate-el>
+                        Education
+                    </h2>
+
+                    <div class="timeline" data-animate-el>
+
+                        <!-- @thymesVar id="education" type="your.package.Education" -->
+                        <div class="timeline__block" th:each="education : ${profile.getEducation()}">
+                            <div class="timeline__bullet"></div>
+                            <div class="timeline__header">
+                                <h4 class="timeline__title" th:text="${education.getInstitutionName()}"></h4>
+                                <h4 class="timeline__meta" th:text="${education.getLocation}"></h4>
+                                <h5 class="timeline__meta" th:text="${education.getDegree()}"></h5>
+                                <p class="timeline__timeframe" th:text="${education.getStartDate()} + ' - ' + ${education.getEndDate()}"></p>
+                                <p class="timeline__timeframe" th:text="|GPA: ${education.getGrade()}|"></p>
+                            </div>
+                            <div class="timeline__desc">
+                                <p th:text="${education.getDescription()}"></p>
+                            </div>
+                        </div>
+
+                    </div> <!-- end timeline -->
+
+                </div> <!-- end column -->
+
+
+            </div> <!-- end about-timelines -->
+
+        </section> <!-- end s-about -->
+
+
+        <!-- ### works
+        ================================================== -->
+        <section id="works" class="s-works target-section">
+
+
+            <div class="row works-portfolio">
+
+                <div class="column lg-12" data-animate-block>
+
+                    <h2 class="text-pretitle" data-animate-el>
+                        Recent Works
+                    </h2>
+                    <p class="h1" data-animate-el>
+                        Here are some of my favorite projects I have done lately. Feel free to check them out.
+                    </p>
+
+                    <ul class="folio-list row block-lg-one-half block-stack-on-1000" >
+                            <li class="folio-list__item column" data-animate-el th:each="project : ${profile.getProjects()}">
+                                <a class="folio-list__item-link" th:href="|#project-${project.getId()}|">
+
+                                    <div class="folio-list__item-pic">
+                                        <img th:src="${project.getImage()}"
+                                             th:srcset="|${project.getImage()} 1x, ${#strings.replace(project.getImage(), '.png', '@2x.png')} 2x|"
+                                             alt="">
+                                    </div>
+
+                                    <div class="folio-list__item-text">
+                                        <div class="folio-list__item-cat">
+                                            Website
+                                        </div>
+                                        <div th:text="${project.getName()}" class="folio-list__item-title">
+
+                                        </div>
+                                    </div>
+                                </a>
+                                <div th:id="'project-' + ${project.getId()}" hidden>
+                                    <div class="modal-popup">
+                                        <img th:src="${project.getImage()}" alt="">
+
+                                        <div class="modal-popup__desc">
+                                            <h5 th:text="${project.getName()}"></h5>
+                                            <p th:text="${project.getDescription()}"></p>
+                                            <ul class="modal-popup__cat" style="display: flex !important;" th:each="technologiesUsed : ${project.getTechnologiesUsed()}">
+                                                <li style="margin-right: 15px;" th:text="${technologiesUsed}"></li>
+                                            </ul>
+                                        </div>
+
+                                        <a th:href="${project.getLink()}" class="modal-popup__details">GitHub link</a>
+                                    </div>
+                                </div> <!-- end modal -->
+                            </li> <!--end folio-list__item -->
+
+                    </ul> <!-- end folio-list -->
+
+                </div> <!-- end column -->
+            </div>
+            <div class="row testimonials">
+                <h2 class="text-pretitle" data-animate-el>
+                    Recommendation
+                </h2>
+                <div class="column lg-12" data-animate-block>
+
+                    <div class="swiper-container testimonial-slider" data-animate-el>
+
+                        <div class="swiper-wrapper">
+
+                            <div class="testimonial-slider__slide swiper-slide">
+                                    <cite class="testimonial-slider__cite">
+                                        <strong>Diana Saldaña Jiménez </strong>
+                                        <span>Assistant Professor of Practice of the Software Engineering Program at the University of Arizona.</span>
+                                    </cite>
+                                <p>
+                                    Sherif was in my class, SFWE 301 Software Engineering
+                                    Requirements Analysis and Testing, he demonstrated a high academic performance, always
+                                    participating and showing skills on problem-solving, teamwork and technical skills as well in
+                                    coding. I found that he was always ready to work and to push others to do the work they were
+                                    supposed to do. Also, I noticed that he has great skills and ambitions in the software engineering
+                                    field. He was in charge to lead his team during the developing of the SRS and implementation as
+                                    well. I recall that I asked his team permission to share their first draft because they did a very good
+                                    job.
+                                </p>
+                            </div> <!-- end testimonial-slider__slide -->
+                            <div class="testimonial-slider__slide swiper-slide">
+                                    <cite class="testimonial-slider__cite">
+                                        <strong>Youssef Abosalem</strong>
+                                        <span>Founder & CEO </span>
+                                        <span>Green Assiut University Initiative</span>
+                                    </cite>
+                                <p>
+                                    His dedication and commitment were further recognized when he was chosen as a mentor for
+                                    the Sustainable Development Goals (SDGs) Ambassadors Program at Assiut University—the first
+                                    program of its kind in Upper Egypt. This prestigious role was awarded to him because of his
+                                    leadership qualities, profound understanding of sustainable development, and his status as a
+                                    certified trainer by the Ministry of Planning and Economic Development. In this capacity,
+                                    Sherif mentored several graduation projects, providing constructive feedback and helping
+                                    students turn their ideas into practical, real-life applications.
+                                </p>
+                            </div> <!-- end testimonial-slider__slide -->
+
+                        </div> <!-- end swiper-wrapper -->
+
+                        <div class="swiper-pagination"></div>
+
+                    </div> <!-- end swiper-container -->
+
+                </div> <!-- end column -->
+            </div> <!-- end row testimonials -->
+
+        </section> <!-- end s-works -->
+
+        <!-- ### accomplishments
+        ================================================== -->
+        <!-- # accomplishments
+ ================================================== -->
+        <section id="accomplishments" class="s-accomplishments target-section">
+            <div class="column lg-12" data-animate-block>
+                <h2 class="text-pretitle" data-animate-el>
+                    Accomplishments
+                </h2>
+            </div>
+            <div class="folio-entries">
+                <div class="entry column" th:each="award : ${profile.getAwards()}">
+                    <a class="entry__link glightbox"
+                       th:attr="data-glightbox='title: ' + ${award.getTitle()} + '; description: .desc-' + ${award.getId()}">
+                        <div class="entry__thumb">
+                            <img th:src="${award.getImages()}" alt="" />
+                        </div>
+                        <div class="entry__info">
+                            <span><a th:href="${award.getLink()}" target="_blank">More Details</a></span>
+                            <h4 class="entry__title" th:text="${award.getTitle()}"></h4>
+                            <div class="entry__cat" th:text="${award.getOrganizationName()}"></div>
+                            <p class="timeline__timeframe" th:text="${award.getDate()}"></p>
+                            <div class="entry__cat" th:text="${award.getDescription()}"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ### contact
+        ================================================== -->
+        <section id="contact" class="s-contact target-section">
+
+            <div class="row contact-top">
+                <div class="column lg-12">
+                    <h2 class="text-pretitle">
+                        Get In Touch
+                    </h2>
+
+                    <p class="h1">
+                        I love to hear from you.
+                        Whether you have a question or just
+                        want to chat about design, tech & art — shoot me a message.
+                    </p>
+                </div>
+            </div> <!-- end contact-top -->
+
+            <div class="row contact-bottom">
+                <div class="column lg-3 md-5 tab-6 stack-on-550 contact-block">
+                    <h3 class="text-pretitle">Reach me at</h3>
+                    <p class="contact-links">
+                        <a th:href="|mailto:${profile.getContactEmail()}|" class="mailtoui" th:text="${profile.getContactEmail()}"></a> <br>
+                        <a th:href="|tel:${profile.getPhone()}|" th:text="${profile.getPhone()}"></a>
+                    </p>
+                </div>
+                <div class="column lg-4 md-5 tab-6 stack-on-550 contact-block">
+                    <h3 class="text-pretitle">Social</h3>
+
+                    <ul class="contact-links">
+                        <li>
+                            <a th:href="${profile.linkedinLink}">
+                                <img src="/images/linkedin.svg" width="50" height="50" alt="LinkedIn icon" />
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="${profile.getGithubLink()}">
+                                <img src="/images/icons8-github.svg" width="50" height="50" alt="GitHub icon" />
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="column lg-4 md-12 contact-block">
+                    <a th:href="|mailto:${profile.getContactEmail()}|" class="mailtoui btn btn--medium u-fullwidth contact-btn">Say Hello.</a>
+                </div>
+            </div> <!-- end contact-bottom -->
+
+        </section> <!-- end contact -->
+
+    </main> <!-- end s-content -->
+
+
+    <!-- ## footer
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="row">
+            <div class="column ss-copyright">
+                <span>© Copyright Sherif Elglaly 2021</span>
+               </div>
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/></svg>
+                </a>
+            </div>
+        </div>
+
+    </footer> <!-- end s-footer -->
+
+</div> <!-- end -s-pagewrap -->
+
+
+<!-- Java Script
+================================================== -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sherif Elglaly</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="/static/css/vendor.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../../../../Hudson-1.0.0/Hudson-1.0.0/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../../../../Hudson-1.0.0/Hudson-1.0.0/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../../../../Hudson-1.0.0/Hudson-1.0.0/favicon-16x16.png">
+    <link rel="manifest" href="../../../../../../../Hudson-1.0.0/Hudson-1.0.0/site.webmanifest">
+
+</head>
+
+
+<body id="top">
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- page wrap
+    ================================================== -->
+    <div id="page" class="s-pagewrap">
+
+
+        <!-- # site header
+        ================================================== -->
+        <header class="s-header">
+            <div class="row s-header__inner">
+
+                <div class="s-header__block">
+                    <div class="s-header__logo">
+                        <a class="logo" href="index.html">
+                            <img src="images/logo.svg" alt="Homepage">
+                        </a>
+                    </div>
+
+                    <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+                </div> <!-- end s-header__block -->
+
+                <nav class="s-header__nav">
+                    <ul class="s-header__menu-links">
+                        <li class="current"><a class="smoothscroll" href="#intro">Intro</a></li>
+                        <li><a class="smooth scroll" href="#about">About</a></li>
+                        <li><a class="smooth scroll" href="#accomplishments">Accomplishments</a></li>
+                        <li><a class="smooth scroll" href="#footer">Contact</a></li>
+                    </ul> <!-- s-header__menu-links -->
+                </nav> <!-- end s-header__nav -->
+
+            </div> <!-- end s-header__inner -->
+        </header> <!-- end s-header -->
+
+
+        <!-- # intro
+        ================================================== -->
+        <section id="intro" class="s-intro target-section">
+
+            <div class="row s-intro__content width-sixteen-col">
+                <div class="column lg-12 s-intro__content-inner grid-block grid-16">
+
+                    <div class="s-intro__content-text">
+
+                        <div class="s-intro__content-pretitle text-pretitle">Hello</div>
+                        <h1 class="s-intro__content-title">   I'm
+                        </h1>
+                        <h1 class="s-intro__content-title" th:text="${profile.getName()}">
+                        </h1>
+                        <h5 th:text="${profile.getBio()}">
+                        </h5>
+
+                        <div class="s-intro__content-btns">
+                            <a class="smoothscroll btn" href="#about">More About Me</a>
+                            <a class="smoothscroll btn btn--stroke" href="#footer">Get In Touch</a>
+                        </div> <!-- s-intro__content-btns -->
+
+                    </div> <!-- s-intro__content-text -->
+
+                </div> <!-- s-intro__content-inner -->
+            </div> <!-- s-intro__content -->
+
+            <ul class="s-intro__social social-list">
+                <li>
+                    <a th:href="${profile.getGithubLink()}" target="_blank" rel="noopener noreferrer">
+                        <img th:src="@{/images/icons/icons8-github.svg}" width="50" height="50" alt="GitHub icon" />
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="${profile.linkedinLink}" target="_blank" rel="noopener noreferrer">
+                        <img th:src="@{/images/icons/linkedin.svg}" width="50" height="50" alt="LinkedIn icon" />
+                    </a>
+                </li>
+
+            </ul> <!-- end s-intro__social -->
+
+            <div class="s-intro__content-media">
+                <img src="/static/images/wildcat.JPG" srcset="/static/images/wildcat.JPG 1x, /static/images/wildcat.JPG 2x" alt="">
+            </div> <!-- s-intro__content-media -->
+
+            <div class="s-intro__btn-download">
+                <a class="btn btn--stroke" href="https://drive.google.com/file/d/1fAYtBeMlPgOq1fGOxcNqI4VSxeVBwPjV/view?usp=sharing">Get My CV</a>
+            </div> <!-- end s-intro__btn-download -->
+
+            <div class="s-intro__scroll-down">
+                <a href="#about" class="smoothscroll">
+                    <div class="scroll-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569l9 13z"></path></svg>
+                    </div>
+                    <span class="scroll-text u-screen-reader-text">Scroll Down</span>
+                </a>
+            </div> <!-- s-intro__scroll-down -->
+
+        </section> <!-- end s-intro -->
+
+
+        <!-- # about
+        ================================================== -->
+        <section id="about" class="s-about target-section">
+
+            <div class="row s-about__content">
+                <div class="column xl-12">
+
+                    <div class="section-header" data-num="01">
+                        <h2 class="text-display-title">About Me.</h2>
+                    </div> <!-- end section-header -->
+
+                    <p th:text="${profile.getAbout()}" class="attention-getter">
+                     </p>
+                    <div class="grid-list-items s-about__blocks">
+
+                        <div class="grid-list-items__item s-about__block">
+                            <h4 class="s-about__block-title">Experience</h4>
+                            <ul class="s-about__list">
+                                <li>
+                                    Spotify
+                                    <span>Product Designer</span>
+                                </li>
+                                <li>
+                                    Dropbox
+                                    <span>Interface Developer</span>
+                                </li>
+                                <li>
+                                    Google
+                                    <span>Lead UI Designer</span>
+                                </li>
+                                <li>
+                                    Figma
+                                    <span>UI Designer</span>
+                                </li>
+                                <li>
+                                    Microsoft
+                                    <span>UI Designer</span>
+                                </li>
+                            </ul>
+                        </div> <!--end s-about__block -->
+
+                        <div class="grid-list-items__item s-about__block">
+                            <h4 class="s-about__block-title">Awards</h4>
+
+                            <ul class="s-about__list">
+                                <li>
+                                    <a href="#0">
+                                        Site Of The Month
+                                        <span>Awwwards — 2023</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#0">
+                                        Site Of The Day
+                                        <span>Awwwards — 2023</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#0">
+                                        Agency of The Year
+                                        <span>Awwwards — 2022</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#0">
+                                        FWA of The Month
+                                        <span>FWA — 2022</span>
+                                    </a>
+                                </li><li>
+                                    <a href="#0">
+                                        Site Of The Month
+                                        <span>Awwwards — 2022</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> <!--end s-about__block -->
+
+                        <div class="grid-list-items__item s-about__block">
+                            <h4 class="s-about__block-title">Skills</h4>
+                            <li th:each="skill : ${profile.skills}" th:text="${skill}"></li>
+                        </div> <!--end s-about__block -->
+
+                    </div> <!-- grid-list-items -->
+
+                </div> <!--end column -->
+            </div> <!--end s-about__content -->
+
+        </section> <!-- end s-about -->
+
+
+
+        <section id="accomplishments" class="s-works target-section">
+
+            <div class="row">
+                <div class="column xl-12">
+                    <div class="section-header" data-num="02">
+                        <h2 class="text-display-title">Selected Works.</h2>
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+        <section class="awards-section">
+            <div class="container">
+                <h2 class="section-title">Honors & Awards</h2>
+                <p class="section-subtitle">Recognitions that inspire me to push further</p>
+
+                <div class="awards-container">
+                    <div class="award-card" th:each="award : ${profile.awards}">
+                        <!-- Decorative Ribbon -->
+                        <div class="award-ribbon">
+                            <svg viewBox="0 0 100 100" class="ribbon-icon">
+                                <path d="M20,10 L50,40 L80,10 L90,30 L60,60 L90,90 L80,100 L50,70 L20,100 L10,90 L40,60 L10,30 Z"/>
+                            </svg>
+                        </div>
+
+                        <!-- Award Content -->
+                        <div class="award-content">
+                            <div class="award-header">
+                                <h3 class="award-title" th:text="${award.title}">Award Title</h3>
+                                <span class="award-date" th:text="${award.date}">2023</span>
+                            </div>
+
+                            <h4 class="award-org" th:text="${award.organizationName}">Organization</h4>
+                            <p class="award-desc" th:text="${award.description}">Description of the award and achievement</p>
+
+                            <!-- Image Gallery -->
+                            <div class="award-images" th:if="${not #lists.isEmpty(award.images)}">
+                                <div class="image-gallery">
+                                    <img th:each="img : ${award.images}"
+                                         th:src="@{'/images/awards/' + ${img}}"
+                                         alt="Award Image"
+                                         class="gallery-thumbnail"
+                                         onclick="openLightbox(this.src)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medal Decoration -->
+                        <div class="award-decoration">
+                            <div class="medal"></div>
+                            <div class="shine"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- # footer
+        ================================================== -->
+        <footer id="footer" class="s-footer target-section">
+
+            <div class="row">
+                <div class="column lg-12">
+                    <div class="section-header light-on-dark" data-num="03">
+                        <h2 class="text-display-title">Get In Touch.</h2>
+                    </div> <!-- end section-header -->
+                </div>
+            </div>
+
+            <div class="row s-footer__content">
+
+                <div class="column xl-6 md-12 s-footer__block s-footer__about">
+                    <p class="attention-getter">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas illum quasi facere libero,
+                    fugiat laboriosam possimus amet consectetur adipisicing elit reprehenderit eveniet tempore quisquam ipsa id esse. Facere ratione dignissimos.
+                    </p>
+                </div> <!-- end section-footer__about -->
+
+                <div class="column xl-6 md-12 s-footer__block s-footer__site-links">
+                    <div class="row">
+                        <div class="column xl-4 lg-5 md-6 tab-12">
+                            <h5>Follow Me</h5>
+                            <ul class="link-list">
+                                <li>
+                                    <a th:href="${profile.getGithubLink()}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white">
+                                        <img th:src="@{/images/icons/icons8-github.svg}" width="50" height="50" alt="GitHub icon" />
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a th:href="${profile.getLinkedinLink()}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-white">
+                                        <img th:src="@{/images/icons/linkedin.svg}" width="50" height="50" alt="LinkedIn icon" />
+                                    </a>
+
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="column xl-6 md-6 tab-12">
+                            <h5>Contact Me</h5>
+                            <ul class="link-list">
+                                <li>
+                                    <a th:href="'mailto:' + ${profile.getContactEmail()}" th:text="${profile.getContactEmail()}"></a>
+                                </li>
+                                <li>
+                                    <a th:href="'tel:' + ${profile.getPhone()}" th:text="${profile.getPhone()}"></a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- end section-footer__site-links -->
+
+            </div> <!-- end section-footer__content -->
+
+
+            <div class="row s-footer__buttons">
+
+                <div class="column xl-6 tab-12">
+                    <a th:href="'mailto:'+${profile.getContactEmail()}" class="btn btn--primary btn--large u-fullwidth">Message Me</a>
+                </div>
+
+                <div class="column xl-6 tab-12">
+                    <a href="#0" class="btn btn--stroke btn--large u-fullwidth">Get My CV</a>
+                </div>
+
+            </div> <!-- end section-footer__buttons -->
+
+            <div class="row s-footer__bottom">
+
+                <div class="column xl-6 lg-12">
+                    <ul class="s-footer__social social-list">
+                        <li>
+                            <a th:href="${profile.getGithubLink()}" target="_blank" rel="noopener noreferrer">
+                                <img th:src="@{/images/icons/icons8-github.svg}" width="40" height="40" alt="GitHub icon" />
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="${profile.linkedinLink}" target="_blank" rel="noopener noreferrer">
+                                <img th:src="@{/images/icons/linkedin.svg}" width="40" height="40" alt="Linkedin icon" />
+                            </a>
+                        </li>
+
+                    </ul>
+                </div> <!-- end section-footer__social -->
+
+                <div class="column xl-6 lg-12">
+                    <p class="ss-copyright">
+                        <span>© Copyright Hudson 2023</span>
+                        <span>Design by <a href="https://styleshout.com/">StyleShout</a> Distribution by <a href="https://themewagon.com">ThemeWagon</a></span>
+                    </p>
+                </div>
+
+            </div> <!-- end section-footer__bottom -->
+
+            <div class="ss-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 5 3v18a1 1 0 0 0 .536.886z"></path></svg>
+                </a>
+                <span>Back To Top</span>
+            </div> <!-- end ss-go-top -->
+
+        </footer> <!-- end s-footer -->
+
+    </div> <!-- end page-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
